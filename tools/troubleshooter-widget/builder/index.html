@@ -123,7 +123,7 @@ fieldset{border:1px solid var(--border);border-radius:10px;padding:4px 12px 12px
 </form></dialog>
 <dialog id="dlgLimit"><form method="dialog" class="dlg">
   <h3>Free version limit reached</h3><p id="limitMsg"></p>
-  <div class="actions"><button value="cancel">Keep editing</button><a class="btn primary" id="upgradeLink" href="#GUMROAD_LINK" target="_blank" rel="noopener">Get the full version</a></div>
+  <div class="actions"><button value="cancel">Keep editing</button><a class="btn primary" id="upgradeLink" href="https://designstogetinspired.gumroad.com/l/stepfix" target="_blank" rel="noopener">Get the full version</a></div>
 </form></dialog>
 <div class="toast" id="toast" role="status"></div>
 
@@ -137,7 +137,7 @@ fieldset{border:1px solid var(--border);border-radius:10px;padding:4px 12px 12px
   var $ = function (s) { return document.querySelector(s); };
   var tree, selected, saveTimer;
   var LABEL_KEYS = ['back', 'restart', 'step', 'solution', 'open', 'close'];
-  var FREE = GT_EDITION === 'free', LIMIT = 10, UPGRADE = window.GT_UPGRADE_URL || '#GUMROAD_LINK';
+  var FREE = GT_EDITION === 'free', LIMIT = 10, UPGRADE = window.GT_UPGRADE_URL || 'https://designstogetinspired.gumroad.com/l/stepfix';
   if (FREE) KEY = 'guided-troubleshooter-free-v1';
   function atLimit() { if (FREE && tree.nodes.length >= LIMIT) { upsell(); return true; } return false; }
   function upsell(extra) { var d = document.getElementById('dlgLimit'); document.getElementById('limitMsg').textContent = (extra ? extra + ' ' : '') + 'The free editor allows up to ' + LIMIT + ' steps (questions and solutions together). The full version has no limit, no "Powered by" link, JSON export, and the editor to keep on your computer.'; d.showModal(); }
