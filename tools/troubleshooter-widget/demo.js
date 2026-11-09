@@ -8,7 +8,6 @@
   function render() {
     var dark = document.getElementById('optDark').checked, isFloat = document.getElementById('optFloat').checked;
     var opts = { tree: BASE + current + '.json', theme: dark ? 'dark' : 'light' };
-    if (current === 'hebrew-sample-legacy-format') { opts.lang = 'he'; opts.title = 'פותר בעיות מחשב'; }
     if (floating) { floating.remove(); floating = null; }
     if (isFloat) {
       host.innerHTML = ''; if (host._gt) host._gt.destroy();

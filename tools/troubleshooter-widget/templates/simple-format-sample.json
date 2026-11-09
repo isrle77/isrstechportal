@@ -1,0 +1,57 @@
+[
+  {
+    "id": "q1",
+    "question": "Your phone won't charge. What do you see when you plug it in?",
+    "answers": [
+      "Nothing at all",
+      "It charges very slowly",
+      "It starts, then stops"
+    ],
+    "next": [
+      "q2",
+      "s_slow",
+      "s_stops"
+    ],
+    "image": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'><rect x='10' y='20' width='90' height='40' rx='8' fill='none' stroke='%234f46e5' stroke-width='6'/><rect x='100' y='32' width='10' height='16' rx='3' fill='%234f46e5'/><rect x='20' y='30' width='25' height='20' rx='3' fill='%23f59e0b'/></svg>"
+  },
+  {
+    "id": "q2",
+    "question": "Does a different cable and charger work?",
+    "answers": [
+      "Yes",
+      "No"
+    ],
+    "next": [
+      "s_cable",
+      "s_port"
+    ]
+  },
+  {
+    "id": "s_cable",
+    "question": "Replace the cable or charger",
+    "answers": [],
+    "next": [],
+    "text": "Cables wear out inside even when they look fine. Use a certified cable and charger."
+  },
+  {
+    "id": "s_port",
+    "question": "Clean the charging port",
+    "answers": [],
+    "next": [],
+    "text": "Turn the phone off and gently remove lint from the port with a wooden toothpick. Then try again."
+  },
+  {
+    "id": "s_slow",
+    "question": "Use a wall charger",
+    "answers": [],
+    "next": [],
+    "text": "Laptop USB ports and car chargers are slow. A wall charger of 18 W or more charges much faster."
+  },
+  {
+    "id": "s_stops",
+    "question": "Let the phone cool down",
+    "answers": [],
+    "next": [],
+    "text": "Phones pause charging when they are hot. Remove the case, keep it out of the sun and try again in 10 minutes."
+  }
+]
