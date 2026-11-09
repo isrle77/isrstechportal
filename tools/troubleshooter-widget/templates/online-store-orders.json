@@ -1,0 +1,173 @@
+{
+  "config": {
+    "title": "Order help",
+    "primaryColor": "#b4531b",
+    "license": "pro"
+  },
+  "start": "start",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "question",
+      "title": "How can we help with your order?",
+      "answers": [
+        "Where is my order?",
+        "Something is wrong with my order",
+        "I want to return or exchange",
+        "I want to change or cancel"
+      ],
+      "next": [
+        "where",
+        "wrong",
+        "return",
+        "change"
+      ]
+    },
+    {
+      "id": "where",
+      "type": "question",
+      "title": "Did you receive a shipping confirmation email?",
+      "answers": [
+        "Yes, with a tracking number",
+        "No email yet"
+      ],
+      "next": [
+        "tracking",
+        "no_email"
+      ]
+    },
+    {
+      "id": "tracking",
+      "type": "solution",
+      "title": "Track your package",
+      "text": "Open the tracking link in your shipping email. Tracking can take up to 24 hours to show the first scan. If it has not moved for 5 business days, contact us with your order number.",
+      "answers": [],
+      "next": [],
+      "cta": {
+        "label": "Contact us",
+        "url": "mailto:help@example.com"
+      }
+    },
+    {
+      "id": "no_email",
+      "type": "question",
+      "title": "How long ago did you place the order?",
+      "answers": [
+        "Less than 2 business days",
+        "More than 2 business days"
+      ],
+      "next": [
+        "processing",
+        "check_spam"
+      ]
+    },
+    {
+      "id": "processing",
+      "type": "solution",
+      "title": "Your order is being prepared",
+      "text": "Orders usually ship within 1 to 2 business days. You will get an email with tracking as soon as it leaves our warehouse.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "check_spam",
+      "type": "solution",
+      "title": "Check your spam folder, then contact us",
+      "text": "Shipping emails sometimes land in spam or promotions. If you cannot find it, send us your order number and we will check it for you.",
+      "answers": [],
+      "next": [],
+      "cta": {
+        "label": "Email support",
+        "url": "mailto:help@example.com"
+      }
+    },
+    {
+      "id": "wrong",
+      "type": "question",
+      "title": "What is the problem?",
+      "answers": [
+        "Item arrived damaged",
+        "I received the wrong item",
+        "Something is missing"
+      ],
+      "next": [
+        "damaged",
+        "wrong_item",
+        "missing"
+      ]
+    },
+    {
+      "id": "damaged",
+      "type": "solution",
+      "title": "Send us a photo",
+      "text": "Sorry about that. Reply to your order confirmation with a photo of the item and the packaging, and we will send a replacement or a refund.",
+      "answers": [],
+      "next": [],
+      "cta": {
+        "label": "Report a problem",
+        "url": "https://example.com/report"
+      }
+    },
+    {
+      "id": "wrong_item",
+      "type": "solution",
+      "title": "We will fix it",
+      "text": "Please do not throw anything away. Send us your order number and a photo of what you received, and we will send the right item with a free return label.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "missing",
+      "type": "solution",
+      "title": "Check for a second package",
+      "text": "Large orders sometimes ship in more than one box. Check your shipping email for multiple tracking numbers. If everything has arrived and an item is still missing, contact us.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "return",
+      "type": "question",
+      "title": "Is it within 30 days of delivery?",
+      "answers": [
+        "Yes",
+        "No, it has been longer"
+      ],
+      "next": [
+        "return_ok",
+        "return_late"
+      ]
+    },
+    {
+      "id": "return_ok",
+      "type": "solution",
+      "title": "Start your return",
+      "text": "Items in original condition can be returned within 30 days. Use our returns page to print a label.",
+      "answers": [],
+      "next": [],
+      "cta": {
+        "label": "Start a return",
+        "url": "https://example.com/returns"
+      }
+    },
+    {
+      "id": "return_late",
+      "type": "solution",
+      "title": "Contact us about late returns",
+      "text": "Our standard return window is 30 days, but we review every case. Send us your order number and the reason.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "change",
+      "type": "solution",
+      "title": "Contact us quickly",
+      "text": "We can change or cancel an order only before it ships. Email us as soon as possible with your order number.",
+      "answers": [],
+      "next": [],
+      "cta": {
+        "label": "Email support",
+        "url": "mailto:help@example.com"
+      }
+    }
+  ]
+}

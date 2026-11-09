@@ -1,0 +1,147 @@
+{
+  "config": {
+    "title": "Wi-Fi troubleshooter",
+    "primaryColor": "#0e7490",
+    "license": "pro"
+  },
+  "start": "start",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "question",
+      "title": "What is happening with your internet?",
+      "answers": [
+        "No device can connect",
+        "Only one device has a problem",
+        "Internet works but is slow"
+      ],
+      "next": [
+        "all_devices",
+        "one_device",
+        "slow"
+      ]
+    },
+    {
+      "id": "all_devices",
+      "type": "question",
+      "title": "Look at the router. Are its lights on?",
+      "answers": [
+        "No lights at all",
+        "Lights are on, some are red or orange",
+        "Lights look normal"
+      ],
+      "next": [
+        "no_power",
+        "red_light",
+        "restart_router"
+      ]
+    },
+    {
+      "id": "no_power",
+      "type": "solution",
+      "title": "Check the power",
+      "text": "Make sure the power cable is firmly connected to the router and to a working wall socket. Try another socket. If the router still shows no lights, it may need to be replaced.",
+      "answers": [],
+      "next": [],
+      "cta": {
+        "label": "Contact support",
+        "url": "https://example.com/support"
+      }
+    },
+    {
+      "id": "red_light",
+      "type": "solution",
+      "title": "Your provider may have an outage",
+      "text": "A red or orange internet light usually means the router has no signal from your provider. Check that the cable from the wall is connected, then check your provider's outage page or call them.",
+      "answers": [],
+      "next": [],
+      "cta": {
+        "label": "Check service status",
+        "url": "https://example.com/status"
+      }
+    },
+    {
+      "id": "restart_router",
+      "type": "question",
+      "title": "Unplug the router, wait 30 seconds and plug it back in. Wait two minutes. Does it work now?",
+      "answers": [
+        "Yes, it works",
+        "No, still no internet"
+      ],
+      "next": [
+        "fixed",
+        "provider"
+      ]
+    },
+    {
+      "id": "fixed",
+      "type": "solution",
+      "title": "Great, you are back online",
+      "text": "Restarting clears temporary faults. If you need to restart often, the router may be overheating; keep it in an open, ventilated spot.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "provider",
+      "type": "solution",
+      "title": "Contact your internet provider",
+      "text": "The router seems fine but there is no connection. Your provider can test the line from their side.",
+      "answers": [],
+      "next": [],
+      "cta": {
+        "label": "Contact support",
+        "url": "https://example.com/support"
+      }
+    },
+    {
+      "id": "one_device",
+      "type": "question",
+      "title": "Is Wi-Fi turned on, and is airplane mode off on that device?",
+      "answers": [
+        "I fixed that and it works",
+        "Both are fine, still no connection"
+      ],
+      "next": [
+        "fixed",
+        "forget"
+      ]
+    },
+    {
+      "id": "forget",
+      "type": "solution",
+      "title": "Forget the network and reconnect",
+      "text": "Open the Wi-Fi settings on the device, choose your network, select Forget, then connect again and re-enter the password. Restarting the device also helps.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "slow",
+      "type": "question",
+      "title": "Are you far from the router or behind thick walls?",
+      "answers": [
+        "Yes",
+        "No, I am close to it"
+      ],
+      "next": [
+        "distance",
+        "many_devices"
+      ]
+    },
+    {
+      "id": "distance",
+      "type": "solution",
+      "title": "Move closer or add a mesh point",
+      "text": "Wi-Fi gets weaker through walls and floors. Place the router in a central, raised spot, or add a mesh access point or extender.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "many_devices",
+      "type": "solution",
+      "title": "Check what is using the connection",
+      "text": "Large downloads, video streaming and backups on other devices can slow everyone down. Pause them and run a speed test. If the speed is far below your plan, contact your provider.",
+      "answers": [],
+      "next": []
+    }
+  ]
+}

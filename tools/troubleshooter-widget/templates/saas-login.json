@@ -1,0 +1,149 @@
+{
+  "config": {
+    "title": "Login help",
+    "primaryColor": "#7c3aed",
+    "theme": "dark",
+    "license": "pro"
+  },
+  "start": "start",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "question",
+      "title": "What happens when you try to sign in?",
+      "answers": [
+        "I forgot my password",
+        "It says my password is wrong",
+        "I don't get the verification code",
+        "My account is locked"
+      ],
+      "next": [
+        "forgot",
+        "wrong_pw",
+        "no_code",
+        "locked"
+      ]
+    },
+    {
+      "id": "forgot",
+      "type": "solution",
+      "title": "Reset your password",
+      "text": "Click \"Forgot password\" on the sign-in page and enter your account email. The reset link is valid for 1 hour. Check spam if it does not arrive within 5 minutes.",
+      "answers": [],
+      "next": [],
+      "cta": {
+        "label": "Reset password",
+        "url": "https://example.com/reset"
+      }
+    },
+    {
+      "id": "wrong_pw",
+      "type": "question",
+      "title": "Are you sure you are using the email you signed up with?",
+      "answers": [
+        "Yes",
+        "Not sure"
+      ],
+      "next": [
+        "caps",
+        "which_email"
+      ]
+    },
+    {
+      "id": "which_email",
+      "type": "solution",
+      "title": "Try your other email addresses",
+      "text": "Many people sign up with a work or old personal email. Try a password reset for each address; only the right one will receive an email.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "caps",
+      "type": "question",
+      "title": "Is Caps Lock off and the keyboard language correct?",
+      "answers": [
+        "Yes, both are fine",
+        "That was it"
+      ],
+      "next": [
+        "reset_anyway",
+        "solved"
+      ]
+    },
+    {
+      "id": "solved",
+      "type": "solution",
+      "title": "You are in",
+      "text": "Tip: a password manager fills in passwords exactly, so typing mistakes do not lock you out.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "reset_anyway",
+      "type": "solution",
+      "title": "Reset your password",
+      "text": "If you are sure of the email and the typing, the fastest fix is a password reset.",
+      "answers": [],
+      "next": [],
+      "cta": {
+        "label": "Reset password",
+        "url": "https://example.com/reset"
+      }
+    },
+    {
+      "id": "no_code",
+      "type": "question",
+      "title": "How do you receive codes?",
+      "answers": [
+        "By email",
+        "By SMS",
+        "With an authenticator app"
+      ],
+      "next": [
+        "code_email",
+        "code_sms",
+        "code_app"
+      ]
+    },
+    {
+      "id": "code_email",
+      "type": "solution",
+      "title": "Check spam and wait 2 minutes",
+      "text": "Codes can take a couple of minutes. Check spam and promotions folders, and only use the newest code if you requested more than one.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "code_sms",
+      "type": "solution",
+      "title": "Check your phone signal",
+      "text": "Make sure the phone has signal and can receive texts from short codes. Wait 2 minutes before requesting a new code.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "code_app",
+      "type": "solution",
+      "title": "Check the time on your phone",
+      "text": "Authenticator codes depend on the clock. Turn on automatic date and time on your phone, then try the newest code. If you lost the phone, use a backup code or contact support.",
+      "answers": [],
+      "next": [],
+      "cta": {
+        "label": "Contact support",
+        "url": "https://example.com/support"
+      }
+    },
+    {
+      "id": "locked",
+      "type": "solution",
+      "title": "Wait 15 minutes or contact support",
+      "text": "Accounts lock for 15 minutes after several failed attempts. Wait and try again, or contact support to verify your identity.",
+      "answers": [],
+      "next": [],
+      "cta": {
+        "label": "Contact support",
+        "url": "https://example.com/support"
+      }
+    }
+  ]
+}

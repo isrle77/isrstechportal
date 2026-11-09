@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Troubleshooter Builder | ISRS Tech Portal</title>
+<meta name="description" content="Free troubleshooter builder: make a click-through FAQ and troubleshooting widget for your website, up to 10 steps. Live preview and copy-paste embed code.">
+<link rel="canonical" href="https://isrstechportal.com/tools/troubleshooter-widget/builder/">
+<meta property="og:url" content="https://isrstechportal.com/tools/troubleshooter-widget/builder/"><meta property="og:image" content="https://isrstechportal.com/tools/troubleshooter-widget/og-troubleshooter.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>window.GT_UPGRADE_URL = '/tools/troubleshooter-widget/#pricing';</script>
+<style>
+:root{--bg:#f4f5fa;--surface:#fff;--text:#1b1d2a;--muted:#5d6275;--border:#e1e4ee;--brand:#4f46e5;--brand-dark:#3730a3;--soft:#eef0ff;--err:#b42318;--err-bg:#fde8e7;--warn:#8a5a00;--warn-bg:#fff4d6;--ok:#0f7a43;--ok-bg:#e3f6ec;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:var(--bg);color:var(--text);font-size:14px;line-height:1.45}
+header{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+header h1{font-size:16px;margin:0 12px 0 0;display:flex;align-items:center;gap:8px}header h1 span{width:22px;height:22px;border-radius:6px;background:var(--brand);display:inline-block}
+.spacer{flex:1}
+button,.btn{font:inherit;font-weight:600;font-size:13px;padding:7px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+button:hover{border-color:var(--brand);color:var(--brand)}button.primary{background:var(--brand);color:#fff;border-color:var(--brand)}button.primary:hover,a.btn.primary:hover{background:var(--brand-dark);color:#fff}a.btn{text-decoration:none}a.btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+button.danger{color:var(--err)}button.danger:hover{border-color:var(--err)}button.small{padding:4px 8px;font-size:12px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--brand);outline-offset:1px}
+main{display:grid;grid-template-columns:260px minmax(340px,1fr) minmax(340px,1fr);gap:14px;padding:14px;align-items:start}
+@media(max-width:1100px){main{grid-template-columns:240px 1fr}#previewCol{grid-column:1/-1}}
+@media(max-width:700px){main{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px}
+.panel h2{font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:0 0 10px;display:flex;justify-content:space-between;align-items:center}
+#nodeList{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:4px;max-height:calc(100vh - 260px);overflow:auto}
+#nodeList button{width:100%;text-align:start;display:block;border-color:transparent;background:transparent;font-weight:500;padding:7px 8px}
+#nodeList button:hover{background:var(--bg);color:var(--text)}#nodeList button[aria-current=true]{background:var(--soft);border-color:var(--brand)}
+#nodeList .t{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#nodeList .id{font-size:11px;color:var(--muted);font-family:ui-monospace,monospace}
+.pill{display:inline-block;font-size:10px;font-weight:700;padding:1px 6px;border-radius:99px;margin-inline-end:4px;text-transform:uppercase}.pill.q{background:var(--soft);color:var(--brand-dark)}.pill.s{background:var(--ok-bg);color:var(--ok)}.pill.start{background:#111;color:#fff}.pill.bad{background:var(--err-bg);color:var(--err)}
+label{display:block;font-weight:600;font-size:12px;color:var(--muted);margin:10px 0 4px}
+input[type=text],input[type=url],select,textarea{width:100%;font:inherit;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text)}
+textarea{min-height:90px;resize:vertical}header select{width:auto;padding:6px 8px;font-size:13px}.row{display:flex;gap:8px;align-items:center}.row>*{flex:1}.row>.fixed{flex:0 0 auto}
+.answer{display:grid;grid-template-columns:1fr 1fr auto;gap:6px;align-items:center;margin-bottom:6px}.answer .ctl{display:flex;gap:2px}
+@media(max-width:520px){.answer{grid-template-columns:1fr}}
+.hint{color:var(--muted);font-size:12px;margin:4px 0 0}
+#issues{list-style:none;padding:0;margin:0;display:grid;gap:6px;max-height:220px;overflow:auto}#issues li{padding:7px 9px;border-radius:8px;font-size:12.5px;cursor:pointer}
+#issues .e{background:var(--err-bg);color:var(--err)}#issues .w{background:var(--warn-bg);color:var(--warn)}#issues .ok{background:var(--ok-bg);color:var(--ok);cursor:default}
+#preview{min-height:320px;background:var(--bg);border-radius:10px;padding:14px}
+dialog{border:0;border-radius:14px;padding:0;max-width:min(720px,94vw);width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)}dialog::backdrop{background:rgba(15,17,30,.45)}
+.dlg{padding:20px}.dlg h3{margin:0 0 6px;font-size:18px}.dlg .actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+pre.code,textarea.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:#0f1222;color:#e6e8f2;border-radius:10px;padding:12px;white-space:pre-wrap;word-break:break-all;min-height:120px;width:100%;border:0}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:9px 16px;border-radius:99px;font-weight:600;z-index:50;opacity:0;transition:opacity .2s;pointer-events:none}.toast.show{opacity:1}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.empty{color:var(--muted);text-align:center;padding:30px 10px}
+fieldset{border:1px solid var(--border);border-radius:10px;padding:4px 12px 12px;margin:12px 0 0}legend{font-weight:700;font-size:12px;padding:0 4px}
+</style>
+</head>
+<body>
+<header>
+  <h1><a href="/tools/troubleshooter-widget/" style="display:flex;align-items:center;gap:8px;color:inherit;text-decoration:none" aria-label="Back to the Troubleshooter Widget page"><span aria-hidden="true"></span></a>Guided Troubleshooter Editor</h1>
+  <select id="templatePick" aria-label="Load a template"><option value="">Load template…</option></select>
+  <button id="btnNew" type="button">New</button>
+  <button id="btnImport" type="button">Import JSON</button>
+  <input id="fileInput" type="file" accept=".json,application/json" hidden>
+  <button id="btnExport" type="button">Export JSON</button>
+  <button id="btnSettings" type="button">Tree settings</button>
+  <span class="spacer"></span>
+  <span id="saveState" class="hint" aria-live="polite"></span>
+  <button id="btnEmbed" class="primary" type="button">Copy embed code</button>
+</header>
+<main>
+  <section class="panel" aria-labelledby="h-steps">
+    <h2 id="h-steps">Steps <span id="count"></span></h2>
+    <ul id="nodeList"></ul>
+    <div class="row"><button id="addQ" type="button">+ Question</button><button id="addS" type="button">+ Solution</button></div>
+  </section>
+  <section class="panel" aria-labelledby="h-edit">
+    <h2 id="h-edit">Edit step</h2>
+    <div id="form"></div>
+    <h2 style="margin-top:18px">Checks</h2>
+    <ul id="issues" aria-live="polite"></ul>
+  </section>
+  <section class="panel" id="previewCol" aria-labelledby="h-prev">
+    <h2 id="h-prev">Live preview <span class="row fixed" style="gap:6px"><button id="prevFrom" class="small" type="button">From this step</button><button id="prevStart" class="small" type="button">From start</button></span></h2>
+    <div id="preview"><div id="previewHost"></div></div>
+  </section>
+</main>
+
+<dialog id="dlgSettings"><form method="dialog" class="dlg">
+  <h3>Tree settings</h3><p class="hint">Saved inside the JSON file. Data attributes on the embed code override these.</p>
+  <div class="grid2">
+    <div><label for="sTitle">Widget title (optional)</label><input id="sTitle" type="text" data-cfg="title"></div>
+    <div><label for="sStart">Start step</label><select id="sStart"></select></div>
+    <div><label for="sLang">Language code</label><input id="sLang" type="text" data-cfg="lang" placeholder="en, he, es, fr…"></div>
+    <div><label for="sDir">Text direction</label><select id="sDir" data-cfg="dir"><option value="">Auto</option><option value="ltr">Left to right</option><option value="rtl">Right to left (Hebrew, Arabic)</option></select></div>
+    <div><label for="sTheme">Theme</label><select id="sTheme" data-cfg="theme"><option value="light">Light</option><option value="dark">Dark</option><option value="auto">Match visitor's system</option></select></div>
+    <div><label for="sColor">Primary color</label><div class="row"><input id="sColorPick" type="color" class="fixed" aria-label="Pick color"><input id="sColor" type="text" data-cfg="primaryColor" placeholder="#4f46e5"></div></div>
+    <div><label for="sFont">Font family</label><input id="sFont" type="text" data-cfg="font" placeholder="inherit or e.g. Georgia, serif"></div>
+    <div><label for="sRadius">Corner radius (px)</label><input id="sRadius" type="text" data-cfg="radius" placeholder="14"></div>
+  </div>
+  <fieldset><legend>Button texts (optional, for other languages)</legend><div class="grid2" id="labelFields"></div></fieldset>
+  <div class="actions"><button class="primary" value="ok">Done</button></div>
+</form></dialog>
+
+<dialog id="dlgImport"><form method="dialog" class="dlg">
+  <h3>Import a tree</h3><p class="hint">Choose a .json file, or paste JSON below. Both the original format (<code>question</code>, <code>answers</code>, <code>next</code>) and the extended format work.</p>
+  <button type="button" id="pickFile">Choose file…</button>
+  <label for="pasteArea">Or paste JSON</label><textarea id="pasteArea" class="code" spellcheck="false"></textarea>
+  <p id="importErr" class="hint" style="color:var(--err)"></p>
+  <div class="actions"><button value="cancel">Cancel</button><button type="button" id="doPaste" class="primary">Import pasted JSON</button></div>
+</form></dialog>
+
+<dialog id="dlgExport"><form method="dialog" class="dlg">
+  <h3>Export JSON</h3>
+  <label><input type="radio" name="fmt" value="full" checked> Full format (recommended, keeps types, texts, buttons and settings)</label>
+  <label><input type="radio" name="fmt" value="legacy"> Simple array format (id, question, answers, next, image only)</label>
+  <label for="fileName">File name</label><input id="fileName" type="text" value="tree.json">
+  <div class="actions"><button value="cancel">Cancel</button><button type="button" id="copyJson">Copy JSON</button><button type="button" id="doExport" class="primary">Download</button></div>
+</form></dialog>
+
+<dialog id="dlgEmbed"><form method="dialog" class="dlg">
+  <h3>Embed code</h3><p class="hint">Upload <code>troubleshooter.min.js</code> (and your tree file, unless you embed the tree in the code) to your site, then paste this where the widget should appear.</p>
+  <div class="grid2">
+    <div><label for="eMode">Style</label><select id="eMode"><option value="script">One line (shows where pasted)</option><option value="inline">Inline box (div)</option><option value="floating">Floating help button</option></select></div>
+    <div><label for="eSource">Tree data</label><select id="eSource"><option value="file">Load from a JSON file</option><option value="inline">Put the tree inside the code (no extra file)</option></select></div>
+    <div><label for="eHost">Widget code</label><select id="eHost"><option value="url">Link to the uploaded troubleshooter.min.js</option><option value="inline">Paste everything inline (no uploads, ~20 KB)</option></select></div>
+    <div><label for="eSrc">Script URL</label><input id="eSrc" type="text" value="/troubleshooter.min.js"></div>
+    <div><label for="eTree">Tree file URL</label><input id="eTree" type="text" value="/tree.json"></div>
+  </div>
+  <label for="eCode">Your code</label><textarea id="eCode" class="code" readonly></textarea>
+  <div class="actions"><button value="cancel">Close</button><button type="button" id="copyEmbed" class="primary">Copy code</button></div>
+</form></dialog>
+<dialog id="dlgLimit"><form method="dialog" class="dlg">
+  <h3>Free version limit reached</h3><p id="limitMsg"></p>
+  <div class="actions"><button value="cancel">Keep editing</button><a class="btn primary" id="upgradeLink" href="#GUMROAD_LINK" target="_blank" rel="noopener">Get the full version</a></div>
+</form></dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script id="gt-widget">/*! Guided Troubleshooter Widget v1.0.0 | Commercial license, see LICENSE.txt | No dependencies */
+!function(t,e){"use strict";var r=e.currentScript,i={en:{back:"Back",restart:"Start over",step:"Step",solution:"Suggested fix",open:"Need help?",close:"Close",loading:"Loading...",errorTitle:"This troubleshooter could not load",brokenLink:"This answer is not connected to a next step yet.",yourAnswers:"Your answers",choose:"Choose an answer"},he:{back:"חזרה",restart:"התחלה מחדש",step:"שלב",solution:"פתרון מוצע",open:"צריכים עזרה?",close:"סגירה",loading:"טוען...",errorTitle:"לא ניתן לטעון את הכלי",brokenLink:"התשובה הזו עדיין לא מחוברת לשלב הבא.",yourAnswers:"התשובות שלך",choose:"בחרו תשובה"},es:{back:"Atrás",restart:"Empezar de nuevo",step:"Paso",solution:"Solución sugerida",open:"¿Necesitas ayuda?",close:"Cerrar",loading:"Cargando...",errorTitle:"No se pudo cargar el asistente",brokenLink:"Esta respuesta aún no está conectada a un paso.",yourAnswers:"Tus respuestas",choose:"Elige una respuesta"}},n=/^(he|iw|ar|fa|ur|yi|ps|sd|ug|dv)\b/i,a={restart:1};function o(t){return t&&"object"==typeof t&&!Array.isArray(t)}function s(t){return null==t?"":String(t)}function l(t){var e,r=t,i={};"string"==typeof r&&(r=JSON.parse(r)),Array.isArray(r)?e=r:o(r)?(e=r.nodes||r.questions||[],i=o(r.config)?r.config:{}):e=[];for(var n=[],a=0;a<e.length;a++){var l=e[a];if(o(l)){for(var d=Array.isArray(l.answers)?l.answers:[],h=Array.isArray(l.next)?l.next:[],p=[],c=0;c<d.length;c++){var g=d[c];o(g)?p.push({label:s(g.label||g.text),next:null!=g.next?s(g.next):s(h[c])}):p.push({label:s(g),next:s(h[c])})}var u="solution"===l.type||"question"===l.type?l.type:p.length?"question":"solution";n.push({id:s(l.id),index:a,type:u,title:s(l.title||l.question),text:s(l.text||l.description),image:s(l.image),imageAlt:s(l.imageAlt||l.alt),options:"solution"===u?[]:p,cta:o(l.cta)&&l.cta.url?{label:s(l.cta.label||l.cta.url),url:s(l.cta.url),newTab:!1!==l.cta.newTab}:null,_legacyMismatch:!o(d[0])&&d.length!==h.length&&Array.isArray(l.next)})}else n.push({id:"",_bad:!0,index:a,options:[]})}return{_n:!0,config:i,nodes:n,start:s(o(r)&&r.start||i.start||n[0]&&n[0].id)}}function d(t){var e=t&&t._n?t:null,r=[],i=[];try{e=e||l(t)}catch(t){return{errors:["The tree is not valid JSON: "+t.message],warnings:[],tree:null}}var n={};if(e.nodes.length||r.push("The tree has no steps. Add at least one question."),e.nodes.forEach(function(t){var e="Step #"+(t.index+1);t._bad?r.push(e+" is not an object."):t.id?(n[t.id]&&r.push('Two steps share the id "'+t.id+'". Ids must be unique.'),n[t.id]=t,t.title||i.push('Step "'+t.id+'" has no question or title text.'),t._legacyMismatch&&r.push('Step "'+t.id+'" has a different number of answers and next ids.'),"question"!==t.type||t.options.length||i.push('Question "'+t.id+'" has no answers, so visitors get stuck there.')):r.push(e+' has no "id".')}),e.nodes.forEach(function(t){t.options.forEach(function(e,o){e.label||i.push("Answer "+(o+1)+' in "'+t.id+'" has no label.'),e.next?n[e.next]||a[e.next]||r.push('Answer "'+(e.label||o+1)+'" in "'+t.id+'" points to "'+e.next+'", which does not exist.'):r.push('Answer "'+(e.label||o+1)+'" in "'+t.id+'" does not lead anywhere.')})}),e.nodes.length&&!n[e.start]&&r.push('The start step "'+e.start+'" does not exist.'),n[e.start]){for(var o={},s=[e.start];s.length;){var d=s.pop();!o[d]&&n[d]&&(o[d]=1,n[d].options.forEach(function(t){s.push(t.next)}))}e.nodes.forEach(function(t){t.id&&!o[t.id]&&i.push('Step "'+t.id+'" cannot be reached from the start.')});var h={},p=[];!function t(e,r){h[e]=1,n[e].options.forEach(function(i){if(n[i.next])if(1===h[i.next]){var a=r.concat(e);p.push(a.slice(a.indexOf(i.next)).concat(i.next).join(" → "))}else h[i.next]||t(i.next,r.concat(e))}),h[e]=2}(e.start,[]),p.forEach(function(t){i.push("Loop detected: "+t+". That is fine if intended, as long as visitors can reach a solution.")})}return{errors:r,warnings:i,tree:e}}function h(t,r,i){var n=e.createElement(t);if(r)for(var a in r)null!=r[a]&&!1!==r[a]&&("text"===a?n.textContent=r[a]:"on"===a.slice(0,2)?n.addEventListener(a.slice(2),r[a]):n.setAttribute(a,!0===r[a]?"":r[a]));return(i||[]).forEach(function(t){t&&n.appendChild("string"==typeof t?e.createTextNode(t):t)}),n}function p(t,r){this.host=t,this.opts=r||{},this.history=[],this.answers=[],this.root=t.shadowRoot||t.attachShadow({mode:"open"}),this.root.innerHTML="",this.root.appendChild(h("style",{text:':host{all:initial;display:block;--gt-primary:#4f46e5;--gt-on-primary:#fff;--gt-radius:14px;--gt-font:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--gt-bg:#fff;--gt-surface:#f6f7fb;--gt-text:#1b1d2a;--gt-muted:#5d6275;--gt-border:#e3e5ee;--gt-ok:#0f7a43;--gt-ok-bg:#e3f6ec;--gt-err:#b42318;--gt-err-bg:#fde8e7}:host([data-gt-theme=dark]){--gt-bg:#171923;--gt-surface:#222533;--gt-text:#eef0f7;--gt-muted:#a3a9bd;--gt-border:#343849;--gt-ok:#5fd49a;--gt-ok-bg:#163b2a;--gt-err:#ff9b91;--gt-err-bg:#43201e}*{box-sizing:border-box}.gt{font-family:var(--gt-font);color:var(--gt-text);background:var(--gt-bg);border:1px solid var(--gt-border);border-radius:var(--gt-radius);padding:20px;line-height:1.55;font-size:16px;max-width:var(--gt-max,640px);margin:0 auto;text-align:start}.gt-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}.gt-title{font-weight:700;font-size:15px;margin:0}.gt-step{font-size:13px;color:var(--gt-muted);white-space:nowrap}.gt-bar{height:6px;border-radius:99px;background:var(--gt-surface);overflow:hidden;margin-bottom:14px}.gt-bar i{display:block;height:100%;background:var(--gt-primary);border-radius:99px;transition:width .3s}.gt-crumbs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;padding:0;list-style:none;font-size:13px}.gt-crumbs button{font:inherit;font-size:13px;color:var(--gt-muted);background:var(--gt-surface);border:1px solid var(--gt-border);border-radius:99px;padding:2px 10px;cursor:pointer;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.gt-crumbs button:hover{color:var(--gt-primary);border-color:var(--gt-primary)}.gt-img{display:block;max-width:100%;max-height:220px;margin:0 auto 14px;border-radius:calc(var(--gt-radius) * .6);object-fit:contain}.gt-q{font-size:20px;line-height:1.3;margin:0 0 8px;outline:none}.gt-text{color:var(--gt-muted);margin:0 0 14px}.gt-text p{margin:0 0 8px}.gt-opts{display:grid;gap:10px;margin:16px 0 4px}.gt-opt{font:inherit;text-align:start;width:100%;padding:13px 16px;border-radius:calc(var(--gt-radius) * .75);border:1.5px solid var(--gt-border);background:var(--gt-bg);color:var(--gt-text);cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color .15s,background .15s}.gt-opt:hover{border-color:var(--gt-primary);background:var(--gt-surface)}.gt-opt b{flex:0 0 26px;height:26px;border-radius:50%;background:var(--gt-surface);color:var(--gt-primary);display:grid;place-items:center;font-size:13px}.gt-opt[aria-disabled=true]{opacity:.55;cursor:not-allowed}button:focus-visible,a:focus-visible{outline:3px solid var(--gt-primary);outline-offset:2px}.gt-badge{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--gt-ok-bg);color:var(--gt-ok);margin-bottom:10px}.gt-cta{display:inline-flex;align-items:center;gap:6px;margin-top:6px;padding:11px 18px;border-radius:calc(var(--gt-radius) * .75);background:var(--gt-primary);color:var(--gt-on-primary);font-weight:600;text-decoration:none}.gt-cta:hover{filter:brightness(1.08)}.gt-foot{display:flex;justify-content:space-between;gap:8px;margin-top:18px;padding-top:14px;border-top:1px solid var(--gt-border)}.gt-btn{font:inherit;font-size:14px;font-weight:600;padding:8px 14px;border-radius:calc(var(--gt-radius) * .6);border:1px solid var(--gt-border);background:var(--gt-bg);color:var(--gt-text);cursor:pointer}.gt-btn:hover:not(:disabled){border-color:var(--gt-primary);color:var(--gt-primary)}.gt-btn:disabled{opacity:.45;cursor:default}.gt-note{font-size:14px;padding:10px 12px;border-radius:10px;background:var(--gt-err-bg);color:var(--gt-err);margin-top:10px}.gt-err ul{margin:8px 0 0;padding-inline-start:20px}.gt-brand{display:block;text-align:center;font-size:11px;margin-top:10px;color:var(--gt-muted);text-decoration:none;opacity:.85}.gt-brand:hover{color:var(--gt-primary);text-decoration:underline}.gt-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.gt-launch{position:fixed;bottom:20px;right:20px;z-index:2147483000;font-family:var(--gt-font);font-size:15px;font-weight:600;border:0;border-radius:99px;padding:13px 20px;background:var(--gt-primary);color:var(--gt-on-primary);box-shadow:0 6px 24px rgba(0,0,0,.2);cursor:pointer}.gt-panel{position:fixed;bottom:84px;right:20px;z-index:2147483000;width:min(400px,calc(100vw - 24px));max-height:calc(100vh - 110px);overflow:auto;box-shadow:0 12px 40px rgba(0,0,0,.25);border-radius:var(--gt-radius)}.gt-panel .gt{max-width:none}.gt-left .gt-launch,.gt-left .gt-panel{right:auto;left:20px}.gt-x{font:inherit;font-size:20px;line-height:1;background:none;border:0;color:var(--gt-muted);cursor:pointer;padding:2px 6px}@media(max-width:480px){.gt{padding:16px}.gt-q{font-size:18px}.gt-panel{right:12px;left:12px;width:auto;bottom:78px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}'})),this.mountPoint=h("div"),this.root.appendChild(this.mountPoint),t.setAttribute("data-gt-ready",""),this.applyTheme({}),this.mountPoint.appendChild(h("div",{class:"gt",role:"status",text:this.label("loading")}));var i,n=this;(i=this.opts.tree,new Promise(function(t,r){if(i&&"object"==typeof i)return t(i);if(!(i=s(i).trim()))return r(new Error('No tree was given. Add data-tree="your-tree.json".'));if("["===i.charAt(0)||"{"===i.charAt(0))try{return t(JSON.parse(i))}catch(t){return r(new Error("The inline tree is not valid JSON: "+t.message))}if("#"===i.charAt(0)){var n=e.querySelector(i);if(!n)return r(new Error("No element matches "+i+"."));try{return t(JSON.parse(n.textContent))}catch(t){return r(new Error("The JSON inside "+i+" is not valid: "+t.message))}}fetch(i,{credentials:"same-origin"}).then(function(t){if(!t.ok)throw new Error("Could not load "+i+" (HTTP "+t.status+").");return t.text()}).then(function(e){try{t(JSON.parse(e))}catch(t){r(new Error(i+" is not valid JSON: "+t.message))}}).catch(function(t){r(t instanceof Error?t:new Error(String(t)))})})).then(function(t){n.setTree(t)},function(t){n.showErrors([t.message||String(t)])})}var c=p.prototype;c.cfg=function(t){var e=this.opts[t];return null!=e&&""!==e?e:(this.config||{})[t]},c.label=function(t){var r=s(this.cfg("lang")||e.documentElement.lang||"en").toLowerCase().split("-")[0];return(this.config&&this.config.labels||{})[t]||(this.opts.labels||{})[t]||(i[r]||i.en)[t]||i.en[t]},c.applyTheme=function(r){this.config=r;var i=this.host.style,a=this.cfg("primaryColor");a&&(i.setProperty("--gt-primary",a),i.setProperty("--gt-on-primary",function(t){var e=/^#?([0-9a-f]{6}|[0-9a-f]{3})$/i.exec(t||"");if(!e)return"#fff";var r=3===e[1].length?e[1].replace(/./g,"$&$&"):e[1];return(299*parseInt(r.substr(0,2),16)+587*parseInt(r.substr(2,2),16)+114*parseInt(r.substr(4,2),16))/1e3>160?"#111":"#fff"}(a))),this.cfg("font")&&i.setProperty("--gt-font",this.cfg("font"));var o=this.cfg("radius");null!=o&&""!==o&&i.setProperty("--gt-radius",/^\d+(\.\d+)?$/.test(String(o))?o+"px":o),this.cfg("maxWidth")&&i.setProperty("--gt-max",/^\d+$/.test(String(this.cfg("maxWidth")))?this.cfg("maxWidth")+"px":this.cfg("maxWidth"));var s=this.cfg("theme")||"light";"auto"===s&&(s=t.matchMedia&&t.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"),this.host.setAttribute("data-gt-theme",s);var l=this.cfg("lang")||e.documentElement.lang||"",d=this.cfg("dir");d&&"auto"!==d||(d=n.test(l)||"rtl"===e.documentElement.dir?"rtl":"ltr"),this.dir=d,this.lang=l},c.setTree=function(e){var r=d(e);if(!r.tree)return this.showErrors(r.errors);this.tree=r.tree,this.applyTheme(r.tree.config),this.map={};var i=this;return r.tree.nodes.forEach(function(t){t.id&&(i.map[t.id]=t)}),this.validation=r,r.warnings.length&&t.console&&console.warn("[Troubleshooter] "+r.warnings.join("\n")),r.errors.length&&!this.cfg("lenient")?this.showErrors(r.errors):(this.startId=s(this.opts.start||r.tree.start),this.map[this.startId]?(this.history=[this.startId],this.answers=[],"floating"===this.cfg("mode")?this.buildFloating():this.render(),void this.emit("ready",{validation:r})):this.showErrors(['The start step "'+this.startId+'" does not exist.']))},c.emit=function(t,e){try{this.host.dispatchEvent(new CustomEvent("troubleshooter:"+t,{bubbles:!0,composed:!0,detail:e||{}}))}catch(t){}},c.shell=function(){return h("div",{class:"gt",dir:this.dir,lang:this.lang||null})},c.showErrors=function(e){this.mountPoint.innerHTML="";var r=this.shell();r.classList.add("gt-err"),r.appendChild(h("div",{class:"gt-note",role:"alert"},[h("strong",{text:this.label("errorTitle")}),h("ul",null,e.slice(0,12).map(function(t){return h("li",{text:t})}))])),this.mountPoint.appendChild(r),t.console&&console.error("[Troubleshooter] "+e.join("\n")),this.emit("error",{errors:e})},c.distanceToSolution=function(t){for(var e={},r=[[t,0]],i=this.map;r.length;){var n=r.shift(),a=i[n[0]];if(a&&!e[n[0]]){if(e[n[0]]=1,"solution"===a.type)return n[1];a.options.forEach(function(t){r.push([t.next,n[1]+1])})}}return 1},c.current=function(){return this.map[this.history[this.history.length-1]]},c.choose=function(t){var e=this.current(),r=e.options[t];if(r){if("restart"===r.next)return this.restart();if(!this.map[r.next])return this.flash=this.label("brokenLink"),void this.render();this.emit("answer",{from:e.id,answer:r.label,to:r.next}),this.history.push(r.next),this.answers.push(r.label),this.render(!0)}},c.back=function(){this.history.length>1&&(this.history.pop(),this.answers.pop(),this.render(!0),this.emit("back",{at:this.current().id}))},c.restart=function(){this.history=[this.startId],this.answers=[],this.render(!0),this.emit("restart",{})},c.goTo=function(t){this.history=this.history.slice(0,t+1),this.answers=this.answers.slice(0,t),this.render(!0)},c.render=function(t){var r=this,i=this.current(),n=this.history.length,a=this.shell(),o="solution"===i.type,s=h("div",{class:"gt-head"},[this.cfg("title")?h("p",{class:"gt-title",text:this.cfg("title")}):h("span"),h("span",{class:"gt-step",text:o?this.label("solution"):this.label("step")+" "+n})]);if(this.floating&&s.appendChild(h("button",{class:"gt-x",type:"button","aria-label":this.label("close"),text:"×",onclick:function(){r.toggle(!1)}})),a.appendChild(s),!1!==this.cfg("progress")&&"false"!==this.cfg("progress")){var l=o?100:Math.round(100*(n-1)/(n-1+this.distanceToSolution(i.id)));a.appendChild(h("div",{class:"gt-bar",role:"progressbar","aria-valuemin":"0","aria-valuemax":"100","aria-valuenow":String(l),"aria-label":this.label("step")+" "+n},[h("i",{style:"width:"+Math.max(l,4)+"%"})]))}if(this.answers.length&&!1!==this.cfg("breadcrumbs")&&"false"!==this.cfg("breadcrumbs")&&a.appendChild(h("ol",{class:"gt-crumbs","aria-label":this.label("yourAnswers")},this.answers.map(function(t,e){return h("li",null,[h("button",{type:"button",title:t,onclick:function(){r.goTo(e)}},[t])])}))),i.image){var d=h("img",{class:"gt-img",src:i.image,alt:i.imageAlt||"",loading:"lazy"});d.onerror=function(){d.style.display="none"},a.appendChild(d)}o&&a.appendChild(h("span",{class:"gt-badge",text:this.label("solution")}));var p,c=h("h3",{class:"gt-q",tabindex:"-1",text:i.title||""});if(a.appendChild(c),i.text&&a.appendChild(h("div",{class:"gt-text"},i.text.split(/\n{2,}/).map(function(t){var r=h("p");return t.split("\n").forEach(function(t,i){i&&r.appendChild(h("br")),r.appendChild(e.createTextNode(t))}),r}))),!o){var g=h("div",{class:"gt-opts",role:"group","aria-label":this.label("choose")});i.options.forEach(function(t,e){var i=!r.map[t.next]&&"restart"!==t.next;g.appendChild(h("button",{class:"gt-opt",type:"button","data-index":String(e),"aria-disabled":i?"true":null,onclick:function(){r.choose(e)}},[h("b",{"aria-hidden":"true",text:String(e+1)}),h("span",{text:t.label})]))}),g.addEventListener("keydown",function(t){var e=[].slice.call(g.querySelectorAll(".gt-opt")),i=e.indexOf(t.target),n=t.key,a="ArrowDown"===n||"ArrowRight"===n&&"rtl"!==r.dir||"ArrowLeft"===n&&"rtl"===r.dir?1:"ArrowUp"===n||"ArrowLeft"===n&&"rtl"!==r.dir||"ArrowRight"===n&&"rtl"===r.dir?-1:0;a&&i>-1&&(t.preventDefault(),e[(i+a+e.length)%e.length].focus())}),a.addEventListener("keydown",function(t){!/^[1-9]$/.test(t.key)||t.ctrlKey||t.metaKey||t.altKey||!i.options[t.key-1]||/^(INPUT|TEXTAREA|SELECT)$/.test(t.target.tagName)||(t.preventDefault(),r.choose(t.key-1))}),a.appendChild(g)}this.flash&&(a.appendChild(h("div",{class:"gt-note",role:"alert",text:this.flash})),this.flash=null),o&&i.cta&&a.appendChild(h("a",{class:"gt-cta",href:(p=i.cta.url,/^(https?:|mailto:|tel:|\/|#|\.)/i.test(p)||!/^[a-z][a-z0-9+.-]*:/i.test(p)?p:"#"),target:i.cta.newTab?"_blank":null,rel:i.cta.newTab?"noopener":null,onclick:function(){r.emit("cta",{node:i.id,url:i.cta.url})}},[i.cta.label])),a.appendChild(h("div",{class:"gt-foot"},[h("button",{class:"gt-btn gt-back",type:"button",disabled:n<2,onclick:function(){r.back()}},[("rtl"===this.dir?"→ ":"← ")+this.label("back")]),h("button",{class:"gt-btn gt-restart",type:"button",disabled:n<2,onclick:function(){r.restart()}},["↺ "+this.label("restart")])])),this.cfg("license")||a.appendChild(h("a",{class:"gt-brand",href:"https://isrstechportal.com/tools/troubleshooter-widget/",target:"_blank",rel:"noopener"},["Powered by ISRS Tech Portal"])),a.appendChild(h("div",{class:"gt-sr","aria-live":"polite",text:(o?this.label("solution")+": ":this.label("step")+" "+n+": ")+(i.title||"")}));var u=this.floating?this.panel:this.mountPoint;u.innerHTML="",u.appendChild(a),t&&c.focus({preventScroll:!0}),this.emit("step",{id:i.id,type:i.type,depth:n,path:this.history.slice()}),o&&this.emit("solution",{id:i.id,path:this.history.slice(),answers:this.answers.slice()})},c.buildFloating=function(){var t=this;this.floating=!0,this.mountPoint.innerHTML="";var e=h("div",{class:"left"===(this.cfg("position")||("rtl"===this.dir?"left":"right"))?"gt-left":"",dir:this.dir});this.launcher=h("button",{class:"gt-launch",type:"button","aria-expanded":"false","aria-haspopup":"dialog",onclick:function(){t.toggle()}},[this.cfg("buttonLabel")||this.label("open")]),this.panel=h("div",{class:"gt-panel",role:"dialog","aria-label":this.cfg("title")||this.label("open"),hidden:!0}),this.panel.addEventListener("keydown",function(e){"Escape"===e.key&&t.toggle(!1)}),e.appendChild(this.panel),e.appendChild(this.launcher),this.mountPoint.appendChild(e),this.render()},c.toggle=function(t){if(this.floating)if(t=null==t?this.panel.hidden:t,this.panel.hidden=!t,this.launcher.setAttribute("aria-expanded",String(t)),t){var e=this.panel.querySelector(".gt-q");e&&e.focus({preventScroll:!0}),this.emit("open")}else this.launcher.focus(),this.emit("close")},c.destroy=function(){this.mountPoint.innerHTML="",this.host.removeAttribute("data-gt-ready")};var g={tree:"tree",mode:"mode",dir:"dir",lang:"lang",theme:"theme",primary:"primaryColor",primaryColor:"primaryColor",font:"font",radius:"radius",title:"title",buttonLabel:"buttonLabel",position:"position",start:"start",license:"license",maxWidth:"maxWidth",progress:"progress",breadcrumbs:"breadcrumbs",lenient:"lenient"};function u(t){var e={};for(var r in g){var i=t.dataset[r];null!=i&&""!==i&&(e[g[r]]="false"!==i&&("true"===i||i))}return e}function f(t,r){if("string"==typeof t&&(t=e.querySelector(t)),!t)throw new Error("Troubleshooter: mount target not found");return t._gt&&t._gt.destroy(),t._gt=new p(t,r||u(t)),t._gt}function b(){for(var t=e.querySelectorAll("[data-troubleshooter]"),r=0;r<t.length;r++)t[r]._gt||"SCRIPT"===t[r].tagName||f(t[r])}if(t.GuidedTroubleshooter={version:"1.0.0",mount:f,validate:d,normalize:l,autoInit:b,labels:i},r&&r.dataset.tree){var x=e.createElement("div");x.className="guided-troubleshooter";var m=r.dataset.target,v=m&&e.querySelector(m);v?v.appendChild(x):r.parentNode&&r.parentNode!==e.head?r.parentNode.insertBefore(x,r.nextSibling):e.addEventListener("DOMContentLoaded",function(){e.body.appendChild(x)});var y=u(r);x.parentNode?f(x,y):e.addEventListener("DOMContentLoaded",function(){f(x,y)})}"loading"===e.readyState?e.addEventListener("DOMContentLoaded",b):b()}(window,document);</script>
+<script>var GT_TEMPLATES = {"appointment-booking": {"config": {"title": "Booking help", "primaryColor": "#be185d"}, "start": "start", "nodes": [{"id": "start", "type": "question", "title": "What do you need help with?", "answers": ["Booking an appointment", "Changing or cancelling", "Payment or deposit"], "next": ["book", "change", "pay"]}, {"id": "book", "type": "solution", "title": "Book online in a minute", "text": "Choose a service, pick a free time slot and enter your name and phone number. You will get a confirmation by text.", "answers": [], "next": [], "cta": {"label": "Book now", "url": "https://example.com/book"}}, {"id": "change", "type": "question", "title": "How long until your appointment?", "answers": ["More than 24 hours", "Less than 24 hours"], "next": ["change_ok", "change_late"]}, {"id": "change_ok", "type": "solution", "title": "Change it yourself", "text": "Use the link in your confirmation message to pick a new time or cancel. There is no fee.", "answers": [], "next": []}, {"id": "change_late", "type": "solution", "title": "Please call us", "text": "Changes less than 24 hours before the appointment are handled by phone so we can offer the slot to someone else.", "answers": [], "next": [], "cta": {"label": "Call us", "url": "tel:+10000000000"}}, {"id": "pay", "type": "solution", "title": "Payments and deposits", "text": "A deposit secures your booking and is taken off the final price. It is refunded if you cancel more than 24 hours ahead.", "answers": [], "next": []}]}, "printer-quick": {"config": {"title": "Printer help", "primaryColor": "#2563eb"}, "start": "start", "nodes": [{"id": "start", "type": "question", "title": "What is the printer doing?", "answers": ["Nothing prints at all", "It prints, but it looks bad", "Paper is stuck"], "next": ["nothing", "quality", "jam"]}, {"id": "nothing", "type": "question", "title": "Is the printer on and showing any error light?", "answers": ["It is off or has no lights", "It shows an error", "It looks normal"], "next": ["power", "error", "queue"]}, {"id": "power", "type": "solution", "title": "Check the power", "text": "Make sure the power cable is connected on both ends and press the power button firmly. Try a different wall socket.", "answers": [], "next": []}, {"id": "error", "type": "solution", "title": "Read the error on the screen", "text": "Most errors are low ink, an open cover or no paper. Fix what the screen shows, then switch the printer off and on again.", "answers": [], "next": [], "cta": {"label": "Contact support", "url": "mailto:support@example.com"}}, {"id": "queue", "type": "solution", "title": "Clear the print queue", "text": "Open the list of printers on your computer, choose this printer and cancel all waiting documents. Restart the computer and print again.", "answers": [], "next": []}, {"id": "quality", "type": "question", "title": "What does the print look like?", "answers": ["Faded or streaky", "Wrong colors"], "next": ["ink", "ink"]}, {"id": "ink", "type": "solution", "title": "Clean the print heads", "text": "Run the cleaning or maintenance tool from the printer menu, then print a test page. If it is still faded, replace the ink or toner.", "answers": [], "next": []}, {"id": "jam", "type": "solution", "title": "Remove the stuck paper gently", "text": "Switch the printer off, open every cover and pull the paper out slowly with both hands in the direction it travels. Check that no small pieces are left inside.", "answers": [], "next": []}]}, "hebrew-sample": [{"id": "q1", "question": "מתי המחשב איטי?", "answers": ["כל הזמן", "רק אחרי ההפעלה", "רק בדפדפן"], "next": ["q2", "s_startup", "s_browser"]}, {"id": "q2", "question": "האם הדיסק כמעט מלא?", "answers": ["כן", "לא"], "next": ["s_disk", "s_hw"]}, {"id": "s_startup", "question": "כבו תוכנות שעולות עם המחשב", "answers": [], "next": [], "text": "בווינדוס: פתחו את מנהל המשימות, לשונית הפעלה, ובטלו תוכנות שלא צריך מיד."}, {"id": "s_browser", "question": "נקו את הדפדפן", "answers": [], "next": [], "text": "עדכנו את הדפדפן, כבו תוספים לא מוכרים ונקו את המטמון."}, {"id": "s_disk", "question": "פנו מקום בדיסק", "answers": [], "next": [], "text": "רוקנו את סל המיחזור, הסירו תוכנות שלא בשימוש והעבירו תמונות וסרטונים לכונן חיצוני."}, {"id": "s_hw", "question": "ייתכן שצריך בדיקת חומרה", "answers": [], "next": [], "text": "החלפת דיסק קשיח ב-SSD היא לרוב השדרוג המשמעותי ביותר למחשב ישן."}]}; var GT_EDITION = 'free';</script>
+<script>
+(function () {
+  'use strict';
+  var G = window.GuidedTroubleshooter, KEY = 'guided-troubleshooter-editor-v1';
+  var $ = function (s) { return document.querySelector(s); };
+  var tree, selected, saveTimer;
+  var LABEL_KEYS = ['back', 'restart', 'step', 'solution', 'open', 'close'];
+  var FREE = GT_EDITION === 'free', LIMIT = 10, UPGRADE = window.GT_UPGRADE_URL || '#GUMROAD_LINK';
+  if (FREE) KEY = 'guided-troubleshooter-free-v1';
+  function atLimit() { if (FREE && tree.nodes.length >= LIMIT) { upsell(); return true; } return false; }
+  function upsell(extra) { var d = document.getElementById('dlgLimit'); document.getElementById('limitMsg').textContent = (extra ? extra + ' ' : '') + 'The free editor allows up to ' + LIMIT + ' steps (questions and solutions together). The full version has no limit, no "Powered by" link, JSON export, and the editor to keep on your computer.'; d.showModal(); }
+
+  function blank() { return { config: { title: '', theme: 'light', primaryColor: '#4f46e5' }, start: 'start', nodes: [{ id: 'start', type: 'question', title: 'What do you need help with?', text: '', answers: ['First option'], next: ['solution_1'] }, { id: 'solution_1', type: 'solution', title: 'Here is the fix', text: 'Describe the steps here.', answers: [], next: [] }] }; }
+  // Convert anything the widget accepts into the editor's model
+  function toModel(raw) {
+    var v = G.validate(raw); if (!v.tree) throw new Error(v.errors[0]);
+    var t = v.tree;
+    var cfg = JSON.parse(JSON.stringify(t.config || {})); delete cfg.start;
+    return { config: cfg, start: t.start, nodes: t.nodes.map(function (n) {
+      var m = { id: n.id, type: n.type, title: n.title, text: n.text, answers: n.options.map(function (o) { return o.label; }), next: n.options.map(function (o) { return o.next; }) };
+      if (n.image) m.image = n.image; if (n.imageAlt) m.imageAlt = n.imageAlt;
+      if (n.cta) m.cta = { label: n.cta.label, url: n.cta.url, newTab: n.cta.newTab };
+      return m; }) };
+  }
+  function exportData(fmt) {
+    if (fmt === 'legacy') return tree.nodes.map(function (n) { var o = { id: n.id, question: n.title, answers: n.type === 'solution' ? [] : n.answers.slice(), next: n.type === 'solution' ? [] : n.next.slice() }; if (n.image) o.image = n.image; if (n.text) o.text = n.text; return o; });
+    var cfgOut = clean(tree.config); delete cfgOut.license; if (!FREE) cfgOut.license = 'pro';
+    var out = { config: cfgOut, start: tree.start, nodes: tree.nodes.map(function (n) {
+      var o = { id: n.id, type: n.type, title: n.title }; if (n.text) o.text = n.text; if (n.image) o.image = n.image; if (n.imageAlt) o.imageAlt = n.imageAlt;
+      o.answers = n.type === 'solution' ? [] : n.answers.slice(); o.next = n.type === 'solution' ? [] : n.next.slice();
+      if (n.type === 'solution' && n.cta && n.cta.url) o.cta = { label: n.cta.label || 'Contact us', url: n.cta.url, newTab: n.cta.newTab !== false };
+      return o; }) };
+    return out;
+  }
+  function clean(o) { var r = {}; for (var k in o) if (o[k] !== '' && o[k] != null && !(typeof o[k] === 'object' && !Object.keys(o[k]).length)) r[k] = o[k]; return r; }
+  function node(id) { for (var i = 0; i < tree.nodes.length; i++) if (tree.nodes[i].id === id) return tree.nodes[i]; }
+  function uid(base) { var i = 1, id; do { id = base + '_' + i++; } while (node(id)); return id; }
+  function toast(msg) { var t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._t); t._t = setTimeout(function () { t.classList.remove('show'); }, 1800); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+  function save() { clearTimeout(saveTimer); saveTimer = setTimeout(function () { try { localStorage.setItem(KEY, JSON.stringify(tree)); $('#saveState').textContent = 'Saved in this browser'; } catch (e) { $('#saveState').textContent = 'Could not autosave'; } }, 250); }
+  function changed(full) { save(); renderList(); renderIssues(); renderPreview(); if (full) renderForm(); }
+
+  function renderList() {
+    var ul = $('#nodeList'); ul.innerHTML = '';
+    var bad = issueIds();
+    tree.nodes.forEach(function (n) {
+      var li = document.createElement('li');
+      li.innerHTML = '<button type="button" data-id="' + esc(n.id) + '"' + (n.id === selected ? ' aria-current="true"' : '') + '><span class="t">' + (n.id === tree.start ? '<span class="pill start">Start</span>' : '') + '<span class="pill ' + (n.type === 'solution' ? 's">Fix' : 'q">Q') + '</span>' + (bad[n.id] ? '<span class="pill bad">!</span>' : '') + esc(n.title || '(untitled)') + '</span><span class="id">' + esc(n.id) + '</span></button>';
+      ul.appendChild(li);
+    });
+    $('#count').textContent = tree.nodes.length;
+  }
+  function issueIds() { var v = G.validate(exportData()), m = {}; v.errors.concat(v.warnings).forEach(function (e) { var r = /"([^"]+)"/.exec(e); if (r && /^Answer|^Two|has a different|^Question/.test(e) && v.errors.indexOf(e) > -1) m[(/in "([^"]+)"/.exec(e) || r)[1]] = 1; }); return m; }
+
+  function options(cur) {
+    var h = '<option value="">— choose next step —</option>';
+    tree.nodes.forEach(function (n) { h += '<option value="' + esc(n.id) + '"' + (n.id === cur ? ' selected' : '') + '>' + esc(n.id + ' · ' + (n.title || '').slice(0, 40)) + '</option>'; });
+    h += '<option value="restart"' + (cur === 'restart' ? ' selected' : '') + '>↺ Restart from the beginning</option>';
+    if (cur && cur !== 'restart' && !node(cur)) h += '<option value="' + esc(cur) + '" selected>⚠ missing: ' + esc(cur) + '</option>';
+    h += '<option value="__newq">+ New question step…</option><option value="__news">+ New solution step…</option>';
+    return h;
+  }
+  function renderForm() {
+    var n = node(selected), f = $('#form');
+    if (!n) { f.innerHTML = '<p class="empty">Select a step on the left, or add one.</p>'; return; }
+    var h = '<div class="grid2"><div><label for="fId">Step id</label><input id="fId" type="text" value="' + esc(n.id) + '"></div>' +
+      '<div><label for="fType">Type</label><select id="fType"><option value="question"' + (n.type === 'question' ? ' selected' : '') + '>Question (has answers)</option><option value="solution"' + (n.type === 'solution' ? ' selected' : '') + '>Solution (end of path)</option></select></div></div>' +
+      '<label for="fTitle">' + (n.type === 'solution' ? 'Solution title' : 'Question') + '</label><input id="fTitle" type="text" value="' + esc(n.title) + '">' +
+      '<label for="fText">' + (n.type === 'solution' ? 'Solution steps' : 'Help text (optional)') + '</label><textarea id="fText">' + esc(n.text) + '</textarea><p class="hint">Plain text. A blank line starts a new paragraph.</p>' +
+      '<div class="grid2"><div><label for="fImg">Image URL (optional)</label><input id="fImg" type="url" value="' + esc(n.image || '') + '" placeholder="https://…/photo.jpg"></div><div><label for="fAlt">Image description</label><input id="fAlt" type="text" value="' + esc(n.imageAlt || '') + '"></div></div>';
+    if (n.type === 'question') {
+      h += '<label>Answers</label><div id="answers">';
+      n.answers.forEach(function (a, i) {
+        h += '<div class="answer" data-i="' + i + '"><input type="text" class="aLabel" aria-label="Answer ' + (i + 1) + ' text" value="' + esc(a) + '"><select class="aNext" aria-label="Answer ' + (i + 1) + ' goes to">' + options(n.next[i]) + '</select><span class="ctl"><button type="button" class="small aUp" aria-label="Move up">↑</button><button type="button" class="small aDown" aria-label="Move down">↓</button><button type="button" class="small danger aDel" aria-label="Remove answer">✕</button></span></div>';
+      });
+      h += '</div><button type="button" id="addAns" class="small">+ Add answer</button>';
+    } else {
+      var c = n.cta || {};
+      h += '<fieldset><legend>Button at the end (optional)</legend><div class="grid2"><div><label for="fCtaL">Button text</label><input id="fCtaL" type="text" value="' + esc(c.label || '') + '" placeholder="Contact support"></div><div><label for="fCtaU">Link</label><input id="fCtaU" type="text" value="' + esc(c.url || '') + '" placeholder="https://… or mailto:…"></div></div><label><input id="fCtaT" type="checkbox"' + (c.newTab !== false ? ' checked' : '') + '> Open in a new tab</label></fieldset>';
+    }
+    h += '<div class="row" style="margin-top:16px;flex-wrap:wrap"><button type="button" id="setStart" class="fixed"' + (n.id === tree.start ? ' disabled' : '') + '>Make this the start step</button><button type="button" id="dupNode" class="fixed">Duplicate</button><span></span><button type="button" id="delNode" class="danger fixed">Delete step</button></div>';
+    f.innerHTML = h;
+  }
+  function renderIssues() {
+    var v = G.validate(exportData()), ul = $('#issues'); ul.innerHTML = '';
+    if (!v.errors.length && !v.warnings.length) { ul.innerHTML = '<li class="ok">✓ Everything is connected. Every answer leads somewhere.</li>'; return v; }
+    v.errors.forEach(function (e) { add('e', '✕ ' + e); }); v.warnings.forEach(function (w) { add('w', '⚠ ' + w); });
+    function add(c, t) { var li = document.createElement('li'); li.className = c; li.textContent = t; var m = /"([^"]+)"/.exec(t); var m2 = /in "([^"]+)"/.exec(t); var id = (m2 || m || [])[1]; if (id && node(id)) li.onclick = function () { select(id); }; ul.appendChild(li); }
+    return v;
+  }
+  var previewFrom = null;
+  function renderPreview() {
+    var host = $('#previewHost'), data = exportData();
+    var o = { tree: data, lenient: true }; if (previewFrom && node(previewFrom)) o.start = previewFrom;
+    try { G.mount(host, o); } catch (e) { host.textContent = e.message; }
+  }
+  function select(id) { selected = id; renderList(); renderForm(); }
+
+  function load(t, msg, noSave) {
+    if (FREE && t.nodes.length > LIMIT) { upsell('This tree has ' + t.nodes.length + ' steps.'); return false; } tree = t; selected = tree.start || (tree.nodes[0] && tree.nodes[0].id); previewFrom = null; if (!noSave) save(); renderList(); renderIssues(); renderPreview(); renderForm(); if (msg) toast(msg); }
+  function renameRefs(oldId, newId) { tree.nodes.forEach(function (n) { n.next = n.next.map(function (x) { return x === oldId ? newId : x; }); }); if (tree.start === oldId) tree.start = newId; }
+  function addNode(type, linkFrom) {
+    if (atLimit()) return null;
+    var id = uid(type === 'solution' ? 'solution' : 'question');
+    tree.nodes.push(type === 'solution' ? { id: id, type: 'solution', title: 'New solution', text: '', answers: [], next: [] } : { id: id, type: 'question', title: 'New question', text: '', answers: ['Yes', 'No'], next: ['', ''] });
+    return id;
+  }
+
+  // ----- Form events (delegated) -----
+  $('#form').addEventListener('input', function (e) {
+    var n = node(selected), t = e.target; if (!n) return;
+    if (t.id === 'fTitle') n.title = t.value; else if (t.id === 'fText') n.text = t.value;
+    else if (t.id === 'fImg') n.image = t.value.trim(); else if (t.id === 'fAlt') n.imageAlt = t.value;
+    else if (t.classList.contains('aLabel')) n.answers[+t.closest('.answer').dataset.i] = t.value;
+    else if (t.id === 'fCtaL' || t.id === 'fCtaU') { n.cta = n.cta || { newTab: true }; n.cta[t.id === 'fCtaL' ? 'label' : 'url'] = t.value.trim(); }
+    else return;
+    changed(false);
+  });
+  $('#form').addEventListener('change', function (e) {
+    var n = node(selected), t = e.target; if (!n) return;
+    if (t.id === 'fId') {
+      var v = t.value.trim().replace(/\s+/g, '_');
+      if (!v || (v !== n.id && node(v))) { toast(v ? 'That id is already used' : 'Id cannot be empty'); t.value = n.id; return; }
+      renameRefs(n.id, v); n.id = v; selected = v; changed(true);
+    } else if (t.id === 'fType') {
+      n.type = t.value; if (n.type === 'question' && !n.answers.length) { n.answers = ['Yes', 'No']; n.next = ['', '']; } changed(true);
+    } else if (t.classList.contains('aNext')) {
+      var i = +t.closest('.answer').dataset.i, val = t.value;
+      if (val === '__newq' || val === '__news') { val = addNode(val === '__news' ? 'solution' : 'question'); if (!val) { t.value = n.next[i] || ''; return; } n.next[i] = val; changed(true); toast('Created ' + val); return; }
+      n.next[i] = val; changed(false);
+    } else if (t.id === 'fCtaT') { n.cta = n.cta || {}; n.cta.newTab = t.checked; changed(false); }
+  });
+  $('#form').addEventListener('click', function (e) {
+    var n = node(selected), b = e.target.closest('button'); if (!n || !b) return;
+    var row = b.closest('.answer'), i = row ? +row.dataset.i : -1;
+    function swap(a, c) { if (c < 0 || c >= n.answers.length) return; [n.answers, n.next].forEach(function (arr) { var x = arr[a]; arr[a] = arr[c]; arr[c] = x; }); }
+    if (b.id === 'addAns') { n.answers.push('New answer'); n.next.push(''); }
+    else if (b.classList.contains('aDel')) { n.answers.splice(i, 1); n.next.splice(i, 1); }
+    else if (b.classList.contains('aUp')) swap(i, i - 1);
+    else if (b.classList.contains('aDown')) swap(i, i + 1);
+    else if (b.id === 'setStart') tree.start = n.id;
+    else if (b.id === 'dupNode') { if (atLimit()) return; var c = JSON.parse(JSON.stringify(n)); c.id = uid(n.id); tree.nodes.splice(tree.nodes.indexOf(n) + 1, 0, c); selected = c.id; }
+    else if (b.id === 'delNode') {
+      if (tree.nodes.length === 1) { toast('A tree needs at least one step'); return; }
+      var refs = tree.nodes.filter(function (x) { return x.next.indexOf(n.id) > -1; }).length;
+      if (!confirm('Delete step "' + n.id + '"?' + (refs ? '\n' + refs + ' step(s) link to it; those answers will need a new target.' : ''))) return;
+      tree.nodes.splice(tree.nodes.indexOf(n), 1);
+      if (tree.start === n.id) tree.start = tree.nodes[0].id;
+      selected = tree.nodes[0].id;
+    } else return;
+    changed(true);
+  });
+  $('#nodeList').addEventListener('click', function (e) { var b = e.target.closest('button[data-id]'); if (b) select(b.dataset.id); });
+  $('#addQ').onclick = function () { var id = addNode('question'); if (!id) return; select(id); changed(true); };
+  $('#addS').onclick = function () { var id = addNode('solution'); if (!id) return; select(id); changed(true); };
+  $('#prevFrom').onclick = function () { previewFrom = selected; renderPreview(); };
+  $('#prevStart').onclick = function () { previewFrom = null; renderPreview(); };
+
+  // ----- Header actions -----
+  Object.keys(GT_TEMPLATES).forEach(function (k) { var o = document.createElement('option'); o.value = k; o.textContent = GT_TEMPLATES[k].config && GT_TEMPLATES[k].config.title ? GT_TEMPLATES[k].config.title + ' (' + k + ')' : k; $('#templatePick').appendChild(o); });
+  $('#templatePick').onchange = function () { var k = this.value; this.value = ''; if (!k) return; if (!confirm('Replace the current tree with the "' + k + '" template?')) return; load(toModel(JSON.parse(JSON.stringify(GT_TEMPLATES[k]))), 'Template loaded'); };
+  $('#btnNew').onclick = function () { if (confirm('Start a new, empty tree? Export first if you want to keep this one.')) load(blank(), 'New tree'); };
+  $('#btnImport').onclick = function () { $('#importErr').textContent = ''; $('#pasteArea').value = ''; $('#dlgImport').showModal(); };
+  $('#pickFile').onclick = function () { $('#fileInput').click(); };
+  function importText(text) { try { if (load(toModel(JSON.parse(text)), 'Imported') === false) { $('#dlgImport').close(); return; } $('#dlgImport').close(); } catch (e) { $('#importErr').textContent = 'Could not import: ' + e.message; } }
+  $('#fileInput').onchange = function () { var f = this.files[0]; if (!f) return; var r = new FileReader(); r.onload = function () { importText(r.result); }; r.readAsText(f); this.value = ''; };
+  $('#doPaste').onclick = function () { importText($('#pasteArea').value); };
+  function fmt() { return document.querySelector('input[name=fmt]:checked').value; }
+  $('#btnExport').onclick = function () { $('#dlgExport').showModal(); };
+  $('#doExport').onclick = function () {
+    var blob = new Blob([JSON.stringify(exportData(fmt()), null, 2)], { type: 'application/json' });
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = $('#fileName').value.trim() || 'tree.json'; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000); $('#dlgExport').close(); toast('Downloaded ' + a.download);
+  };
+  $('#copyJson').onclick = function () { copy(JSON.stringify(exportData(fmt()), null, 2), 'JSON copied'); };
+  function copy(text, msg) {
+    function fallback() { var t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); toast(msg); } catch (e) { toast('Select the text and copy it'); } t.remove(); }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(function () { toast(msg); }, fallback); else fallback();
+  }
+
+  // Settings
+  LABEL_KEYS.forEach(function (k) { var d = document.createElement('div'); d.innerHTML = '<label for="lbl_' + k + '">' + k + '</label><input id="lbl_' + k + '" type="text" data-label="' + k + '" placeholder="' + esc(G.labels.en[k]) + '">'; $('#labelFields').appendChild(d); });
+  $('#btnSettings').onclick = function () {
+    var c = tree.config || {};
+    document.querySelectorAll('[data-cfg]').forEach(function (i) { i.value = c[i.dataset.cfg] != null ? c[i.dataset.cfg] : (i.dataset.cfg === 'theme' ? 'light' : ''); });
+    document.querySelectorAll('[data-label]').forEach(function (i) { i.value = (c.labels || {})[i.dataset.label] || ''; });
+    $('#sColorPick').value = /^#[0-9a-f]{6}$/i.test(c.primaryColor || '') ? c.primaryColor : '#4f46e5';
+    $('#sStart').innerHTML = tree.nodes.map(function (n) { return '<option value="' + esc(n.id) + '"' + (n.id === tree.start ? ' selected' : '') + '>' + esc(n.id) + '</option>'; }).join('');
+    $('#dlgSettings').showModal();
+  };
+  $('#dlgSettings').addEventListener('input', function (e) {
+    var t = e.target; tree.config = tree.config || {};
+    if (t.id === 'sColorPick') { $('#sColor').value = t.value; tree.config.primaryColor = t.value; }
+    else if (t.dataset.cfg) tree.config[t.dataset.cfg] = t.value.trim();
+    else if (t.dataset.label) { tree.config.labels = tree.config.labels || {}; if (t.value.trim()) tree.config.labels[t.dataset.label] = t.value.trim(); else delete tree.config.labels[t.dataset.label]; }
+    else if (t.id === 'sStart') tree.start = t.value;
+    changed(false);
+  });
+  $('#dlgSettings').addEventListener('change', function (e) { if (e.target.id === 'sStart') { tree.start = e.target.value; changed(false); } });
+
+  // Embed code generator
+  function embedCode() {
+    var mode = $('#eMode').value, inline = $('#eSource').value === 'inline', src = $('#eSrc').value.trim() || 'troubleshooter.min.js', file = $('#eTree').value.trim() || 'tree.json';
+    var selfContained = $('#eHost').value === 'inline'; $('#eSrc').disabled = selfContained;
+    if (selfContained) { inline = true; $('#eSource').value = 'inline'; }
+    $('#eSource').disabled = selfContained;
+    var treeAttr = inline ? '#gt-tree' : file, pre = '';
+    if (inline) pre = '<script type="application/json" id="gt-tree">' + JSON.stringify(exportData()).replace(/</g, '\\u003c') + '<\/script>\n';
+    $('#eTree').disabled = inline;
+    if (selfContained) {
+      var code = document.getElementById('gt-widget').textContent;
+      if (mode === 'script') return pre + '<script data-tree="' + treeAttr + '">' + code + '<\/script>';
+      return pre + '<div data-troubleshooter data-tree="' + treeAttr + '"' + (mode === 'floating' ? ' data-mode="floating"' : '') + '></div>\n<script>' + code + '<\/script>';
+    }
+    if (mode === 'script') return pre + '<script src="' + src + '" data-tree="' + treeAttr + '"><\/script>';
+    return pre + '<div data-troubleshooter data-tree="' + treeAttr + '"' + (mode === 'floating' ? ' data-mode="floating"' : '') + '></div>\n<script src="' + src + '" defer><\/script>';
+  }
+  function refreshEmbed() { $('#eCode').value = embedCode(); }
+  $('#btnEmbed').onclick = function () { refreshEmbed(); $('#dlgEmbed').showModal(); };
+  ['#eMode', '#eSource', '#eSrc', '#eTree', '#eHost'].forEach(function (s) { $(s).addEventListener('input', refreshEmbed); $(s).addEventListener('change', refreshEmbed); });
+  $('#copyEmbed').onclick = function () { copy($('#eCode').value, 'Embed code copied'); };
+
+  if (FREE) {
+    document.title = 'Free Troubleshooter Builder (up to ' + LIMIT + ' steps)';
+    document.querySelector('header h1').lastChild.textContent = 'Troubleshooter Builder · Free';
+    $('#btnExport').hidden = true;
+    $('#eHost').value = 'inline'; $('#eHost').disabled = true; $('#eSrc').closest('div').hidden = true; $('#eTree').closest('div').hidden = true; $('#eSource').closest('div').hidden = true;
+    $('#eHost').closest('div').querySelector('label').textContent = 'Widget code (free version: everything inline)';
+    $('#upgradeLink').href = UPGRADE;
+    var badge = document.createElement('a'); badge.className = 'btn'; badge.href = UPGRADE; badge.target = '_blank'; badge.rel = 'noopener'; badge.id = 'limitBadge'; $('#saveState').before(badge);
+    var upd = function () { badge.textContent = tree.nodes.length + ' / ' + LIMIT + ' steps · Get unlimited'; };
+    var oldList = renderList; renderList = function () { oldList(); upd(); };
+  }
+  // Boot
+  var saved = null; try { saved = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
+  if (saved && saved.nodes && saved.nodes.length) { load(saved, null, true); $('#saveState').textContent = 'Restored from this browser'; }
+  else load(FREE ? blank() : toModel(JSON.parse(JSON.stringify(GT_TEMPLATES['slow-computer'] || blank()))), null, true);
+  window.GTEditor = { getTree: function () { return exportData(); }, load: function (t) { load(toModel(t)); } };
+})();
+</script>
+</body>
+</html>

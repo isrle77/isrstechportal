@@ -1,0 +1,197 @@
+{
+  "config": {
+    "title": "Slow computer helper",
+    "primaryColor": "#4f46e5",
+    "theme": "light",
+    "license": "pro"
+  },
+  "start": "start",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "question",
+      "title": "When is your computer slow?",
+      "text": "Pick the answer that fits best. You can go back at any time.",
+      "answers": [
+        "All the time",
+        "Only right after I turn it on",
+        "Only in the web browser",
+        "It started after an update or new program"
+      ],
+      "next": [
+        "always",
+        "startup",
+        "browser",
+        "recent"
+      ]
+    },
+    {
+      "id": "always",
+      "type": "question",
+      "title": "Is the disk almost full?",
+      "answers": [
+        "Yes, less than 10% free",
+        "No, there is plenty of space",
+        "I don't know how to check"
+      ],
+      "next": [
+        "disk_full",
+        "ram",
+        "check_disk"
+      ]
+    },
+    {
+      "id": "check_disk",
+      "type": "solution",
+      "title": "How to check free disk space",
+      "text": "Windows: open File Explorer, select This PC and look at the bar under your main drive (usually C:).\nMac: open the Apple menu, choose System Settings, then General, then Storage.\n\nIf less than 10% is free, start over and choose \"Yes\".",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "disk_full",
+      "type": "solution",
+      "title": "Free up disk space",
+      "text": "A nearly full drive slows everything down.\n\n1. Empty the Recycle Bin or Trash.\n2. Uninstall programs you no longer use.\n3. Move photos and videos to an external drive or cloud storage.\n4. On Windows, run Disk Cleanup. On a Mac, use Storage recommendations.\n\nRestart the computer when you are done.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "ram",
+      "type": "question",
+      "title": "Do many programs or browser tabs stay open at once?",
+      "answers": [
+        "Yes, lots of them",
+        "No, only one or two"
+      ],
+      "next": [
+        "close_apps",
+        "malware"
+      ]
+    },
+    {
+      "id": "close_apps",
+      "type": "solution",
+      "title": "Close what you are not using",
+      "text": "Each open program and tab uses memory. Close the ones you do not need, then check Task Manager (Ctrl+Shift+Esc) on Windows or Activity Monitor on a Mac to see what uses the most memory. If the computer has 8 GB of memory or less, adding more can make a big difference.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "malware",
+      "type": "question",
+      "title": "Do you see pop-ups, new toolbars or programs you did not install?",
+      "answers": [
+        "Yes",
+        "No"
+      ],
+      "next": [
+        "malware_yes",
+        "hardware"
+      ]
+    },
+    {
+      "id": "malware_yes",
+      "type": "solution",
+      "title": "Scan for unwanted software",
+      "text": "Run a full scan with your security software (Windows Security is built into Windows). Remove browser extensions you do not recognise and uninstall unknown programs. If the problem continues, contact a technician.",
+      "answers": [],
+      "next": [],
+      "cta": {
+        "label": "Contact support",
+        "url": "mailto:support@example.com"
+      }
+    },
+    {
+      "id": "hardware",
+      "type": "solution",
+      "title": "It may be time for a hardware check",
+      "text": "If the disk has space, few programs are open and there are no signs of unwanted software, the cause may be an old hard drive or overheating. Replacing a hard disk (HDD) with a solid-state drive (SSD) is often the biggest speed upgrade for older computers.",
+      "answers": [],
+      "next": [],
+      "cta": {
+        "label": "Book a repair",
+        "url": "https://example.com/book"
+      }
+    },
+    {
+      "id": "startup",
+      "type": "question",
+      "title": "How many programs open by themselves when the computer starts?",
+      "answers": [
+        "A lot",
+        "Just a few"
+      ],
+      "next": [
+        "startup_apps",
+        "always"
+      ]
+    },
+    {
+      "id": "startup_apps",
+      "type": "solution",
+      "title": "Turn off startup programs",
+      "text": "Windows: open Task Manager, go to the Startup tab and disable programs you do not need right away.\nMac: open System Settings, General, Login Items and remove items you do not need.\n\nRestart to see the difference.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "browser",
+      "type": "question",
+      "title": "Does the slowness happen on every website?",
+      "answers": [
+        "Yes, every site",
+        "Only on some sites"
+      ],
+      "next": [
+        "browser_clean",
+        "site_issue"
+      ]
+    },
+    {
+      "id": "browser_clean",
+      "type": "solution",
+      "title": "Clean up the browser",
+      "text": "Update the browser to the latest version, disable extensions one by one to find a heavy one, and clear the cache. Keeping fewer than 20 tabs open also helps.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "site_issue",
+      "type": "solution",
+      "title": "The problem is probably the website",
+      "text": "If only some sites are slow, the problem is likely on their side or with your connection to them. Try again later, or test the same site on another device.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "recent",
+      "type": "question",
+      "title": "Did the slowness start right after installing something?",
+      "answers": [
+        "Yes, a new program",
+        "Yes, a system update"
+      ],
+      "next": [
+        "uninstall",
+        "update_wait"
+      ]
+    },
+    {
+      "id": "uninstall",
+      "type": "solution",
+      "title": "Remove the new program",
+      "text": "Uninstall the program you added most recently and restart. If things get faster, look for an updated version of that program or an alternative.",
+      "answers": [],
+      "next": []
+    },
+    {
+      "id": "update_wait",
+      "type": "solution",
+      "title": "Give the update time to finish",
+      "text": "After a big update, the system re-indexes files in the background for a few hours. Leave the computer on and plugged in, then restart. If it is still slow after a day, check for a newer update.",
+      "answers": [],
+      "next": []
+    }
+  ]
+}
