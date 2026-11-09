@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://isrstechportal.com/sitemap.xml

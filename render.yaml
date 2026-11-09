@@ -1,0 +1,17 @@
+# Render Blueprint (optional). Plain static site, no build step.
+services:
+  - type: web
+    name: isrstechportal
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=86400

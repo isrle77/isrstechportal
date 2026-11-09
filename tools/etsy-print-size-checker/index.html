@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Etsy Print Size & DPI Checker: Free Wall Art Resolution Tool</title>
+  <meta name="description" content="Free print size checker for Etsy printables. See the max print size at 300 and 150 DPI, effective DPI for 4x6 to 24x36 and A5 to A1, and which sizes need cropping.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://isrstechportal.com/tools/etsy-print-size-checker/">
+  <meta property="og:url" content="https://isrstechportal.com/tools/etsy-print-size-checker/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ISRS Tech Portal">
+  <meta property="og:title" content="Etsy Print Size & DPI Checker: Free Wall Art Resolution Tool">
+  <meta property="og:description" content="Free print size checker for Etsy printables. See the max print size at 300 and 150 DPI, effective DPI for 4x6 to 24x36 and A5 to A1, and which sizes need cropping.">
+  <meta property="og:image" content="https://isrstechportal.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Etsy Print Size & DPI Checker", "url": "https://isrstechportal.com/tools/etsy-print-size-checker/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript. Works in modern browsers.", "description": "Check the maximum print size and effective DPI of an image for common wall art frame sizes, including 2:3, 3:4, 4:5, 11:14 and A-series ratios. Images are processed in the browser and never uploaded.", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "ISRS Tech Portal", "url": "https://isrstechportal.com/"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What DPI do I need for Etsy printable wall art?", "acceptedAnswer": {"@type": "Answer", "text": "Aim for 300 DPI at the largest size you advertise. That is the standard print shops and home printers expect for sharp results viewed up close. For large posters that are viewed from a distance, 150 to 200 DPI usually still looks good, but anything below 150 DPI is likely to look soft."}}, {"@type": "Question", "name": "Does changing the DPI setting in Photoshop make my image sharper?", "acceptedAnswer": {"@type": "Answer", "text": "No. The DPI value stored in a file is only a label. What matters is the number of pixels. A 2400 x 3000 pixel image prints at 300 DPI on 8 x 10 inches whether its metadata says 72 or 300. To print larger at the same quality you need more pixels, ideally by creating the artwork at a high resolution from the start."}}, {"@type": "Question", "name": "How many pixels do I need for a 24 x 36 inch print?", "acceptedAnswer": {"@type": "Answer", "text": "At 300 DPI you need 7200 x 10800 pixels (24 x 300 by 36 x 300). At 150 DPI you need 3600 x 5400 pixels."}}, {"@type": "Question", "name": "Which files should I include in an Etsy printable listing?", "acceptedAnswer": {"@type": "Answer", "text": "A common setup is one high-resolution file per aspect ratio: 2:3, 3:4, 4:5, 11:14, and ISO (A-series). Each file covers every smaller size in the same ratio, so five files can serve more than twenty frame sizes, which fits within Etsy's limit of five files per digital listing."}}, {"@type": "Question", "name": "Why does my 8 x 10 print look cropped?", "acceptedAnswer": {"@type": "Answer", "text": "8 x 10 is a 4:5 ratio, while many artworks are designed at 2:3 (for example 24 x 36). Printing a 2:3 image at 8 x 10 means part of the image is cut off. Including a separate 4:5 file in your listing avoids this."}}, {"@type": "Question", "name": "Is my image uploaded when I use this checker?", "acceptedAnswer": {"@type": "Answer", "text": "No. The checker reads the image dimensions inside your browser. The file never leaves your device, and nothing is sent to a server."}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://isrstechportal.com/"}, {"@type": "ListItem", "position": 2, "name": "Etsy Print Size & DPI Checker", "item": "https://isrstechportal.com/tools/etsy-print-size-checker/"}]}</script>
+  <script src="/assets/js/print-calc.js" defer></script>
+  <script src="/assets/js/print-checker.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#4f46e5"/><rect x="16" y="13" width="24" height="34" rx="3" fill="none" stroke="#fff" stroke-width="4"/><path d="M34 51h14V23" fill="none" stroke="#c7d2fe" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="28" cy="24" r="3.5" fill="#fff"/><path d="M19 43l7-8 5 5 3-3 4 6" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg><span>ISRS Tech Portal</span></a>
+    <nav class="nav" aria-label="Main">
+<a href="/">Home</a>
+<a href="/tools/etsy-print-size-checker/" aria-current="page">Print Size Checker</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="container">
+<div class="page-head">
+  <div class="breadcrumb"><a href="/">Home</a> / Print Size Checker</div>
+  <h1>Etsy Print Size &amp; DPI Checker</h1>
+  <p>Find out how large your digital art can be printed, the effective DPI at every common frame size, and which sizes need cropping. Your image stays on your device.</p>
+</div>
+
+<section class="card" aria-label="Print size checker">
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-upload" aria-controls="panel-upload" aria-selected="true">Upload image</button>
+    <button class="tab" role="tab" id="tab-manual" aria-controls="panel-manual" aria-selected="false" tabindex="-1">Enter pixels</button>
+  </div>
+  <div id="panel-upload" role="tabpanel" aria-labelledby="tab-upload">
+    <label for="file-input" class="dropzone" id="dropzone">
+      <strong>Choose an image or drop it here</strong>
+      <p>JPG, PNG, WebP, GIF or AVIF</p>
+    </label>
+    <input type="file" id="file-input" accept="image/*" class="hidden">
+    <p class="privacy-note"><span aria-hidden="true">&#128274;</span> Your image is read only inside your browser. It is never uploaded.</p>
+  </div>
+  <div id="panel-manual" role="tabpanel" aria-labelledby="tab-manual" class="hidden">
+    <form id="manual-form" class="manual-grid" novalidate>
+      <div><label for="px-w">Width (px)</label><input type="number" id="px-w" min="1" step="1" inputmode="numeric" placeholder="e.g. 7200" required></div>
+      <div><label for="px-h">Height (px)</label><input type="number" id="px-h" min="1" step="1" inputmode="numeric" placeholder="e.g. 10800" required></div>
+      <button type="submit" class="btn">Check sizes</button>
+    </form>
+  </div>
+  <p class="error hidden" id="error" role="alert"></p>
+
+  <div id="results" class="hidden" aria-live="polite">
+    <div class="summary">
+      <div class="preview" id="preview"><span style="color:var(--muted);font-size:.9rem">No preview</span></div>
+      <div class="stats" id="stats"></div>
+    </div>
+    <div class="legend">
+      <span><span class="badge pass">Pass</span> 300+ DPI, sharp up close</span>
+      <span><span class="badge warn">Warn</span> 150&ndash;299 DPI, fine at a distance</span>
+      <span><span class="badge fail">Fail</span> under 150 DPI, likely soft</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin:0">Effective DPI assumes the image is scaled to fill the whole print, with any extra cropped off. Sizes are rotated to match your image's orientation.</p>
+    <div id="groups"></div>
+  </div>
+</section>
+
+<aside class="promo" aria-label="From the maker">
+  <p><strong>Made by DesignsToGetInspired.</strong> The person behind these tools also designs printable wall art and digital templates.</p>
+  <a href="https://designstogetinspired.etsy.com" rel="noopener" target="_blank">Visit the Etsy shop &rarr;</a>
+</aside>
+
+<article class="prose" id="guide">
+<h2>A practical guide to print sizes for Etsy wall art</h2>
+<p>When you sell printable wall art, the buyer does the printing. That means your file has to work at whatever size they choose, on whatever printer or print shop they use. Two numbers decide whether that goes well: the pixel dimensions of your file and its aspect ratio. This guide explains both and shows how to set up listing files that print cleanly.</p>
+
+<h2>Pixels, inches, and DPI</h2>
+<p>DPI (dots per inch, often used interchangeably with PPI, pixels per inch) describes how many image pixels are packed into each inch of paper. The relationship is simple:</p>
+<p><strong>Print size in inches = pixels &divide; DPI</strong></p>
+<p>A file that is 3000 pixels wide prints 10 inches wide at 300 DPI, or 20 inches wide at 150 DPI. The pixels stay the same; only how tightly they are packed changes. For metric sizes, multiply inches by 2.54 to get centimeters.</p>
+<p>A common misunderstanding is that the DPI value saved in the file matters. It does not. A file labelled 72 DPI with 7200 x 10800 pixels has exactly the same printing potential as one labelled 300 DPI. Changing the label without adding pixels changes nothing, which is why this checker ignores the stored value and works only with pixel dimensions.</p>
+
+<h2>How much resolution is enough?</h2>
+<ul>
+<li><strong>300 DPI</strong> is the professional standard for prints viewed at arm's length, such as 5 x 7 or 8 x 10 frames on a desk or shelf.</li>
+<li><strong>150 to 299 DPI</strong> is usually acceptable for larger posters. People stand further back from a 24 x 36 print, so the eye cannot resolve individual pixels as easily. Clean vector-style art holds up better than detailed photography in this range.</li>
+<li><strong>Below 150 DPI</strong> prints tend to look soft or pixelated, especially edges and text.</li>
+</ul>
+<p>For example, a 3000 x 4500 pixel image reaches 250 DPI at 12 x 18 inches but only 125 DPI at 24 x 36 inches. It works well as a medium print but should not be sold as a large poster.</p>
+
+<h2>Aspect ratio: why one file cannot fit every frame</h2>
+<p>Aspect ratio is the proportion between width and height. Standard frame sizes come in a handful of ratios, and each ratio covers several sizes:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Ratio</th><th>Common sizes</th><th>Pixels for largest size at 300 DPI</th></tr></thead>
+<tbody>
+<tr><td>2:3</td><td>4x6, 8x12, 12x18, 16x24, 20x30, 24x36 in</td><td>7200 x 10800 (24x36)</td></tr>
+<tr><td>3:4</td><td>6x8, 9x12, 12x16, 18x24 in</td><td>5400 x 7200 (18x24)</td></tr>
+<tr><td>4:5</td><td>4x5, 8x10, 16x20, 24x30 in</td><td>7200 x 9000 (24x30)</td></tr>
+<tr><td>5:7</td><td>5x7, 10x14, 20x28 in</td><td>6000 x 8400 (20x28)</td></tr>
+<tr><td>11:14</td><td>11x14, 22x28 in</td><td>6600 x 8400 (22x28)</td></tr>
+<tr><td>ISO (A-series)</td><td>A5, A4, A3, A2, A1</td><td>7016 x 9933 (A1)</td></tr>
+</tbody></table></div>
+<p>If an image's ratio differs from the frame's ratio, something has to give: either part of the artwork is cropped off or white borders are added. A 2:3 design printed at 8 x 10 (4:5) loses about one sixth of its height. For a minimal line drawing with lots of empty space that may be fine, but for artwork with text near the edges it can ruin the print.</p>
+
+<h2>Which files to include in your listing</h2>
+<p>The most reliable approach is one file per ratio, each exported at the largest size you want to support. Because every size in a ratio is just a scaled version of the same shape, the buyer can print any smaller size from the big file without losing quality. A typical set of five files looks like this:</p>
+<ol>
+<li>2:3 ratio at 7200 x 10800 px, covering 4x6 up to 24x36</li>
+<li>3:4 ratio at 5400 x 7200 px, covering 6x8 up to 18x24</li>
+<li>4:5 ratio at 4800 x 6000 px or larger, covering 4x5 up to 16x20</li>
+<li>11:14 ratio at 3300 x 4200 px, covering 11x14</li>
+<li>ISO ratio at 7016 x 9933 px, covering A5 up to A1 for international buyers</li>
+</ol>
+<p>Etsy allows up to five files per digital listing, with a size limit per file, so this set fits neatly. Save as high-quality JPG to keep files under the limit; very large PNGs often exceed it. If a file is still too big, zip several files together or reduce the largest supported size within that ratio.</p>
+<p>Rather than simply cropping one master file into each ratio, adjust the layout for each one. Move text and key elements so nothing important sits near an edge that gets trimmed.</p>
+
+<h2>How to use this checker</h2>
+<ol>
+<li>Upload your final export, or switch to <em>Enter pixels</em> and type the width and height.</li>
+<li>Check the maximum print size at 300 DPI and 150 DPI to see the realistic size range.</li>
+<li>Look at the group that matches your ratio. Every size there should show <em>Pass</em> for the sizes you plan to advertise.</li>
+<li>For the other ratios, the <em>Ratio fit</em> column shows how much would be cropped. Use it to decide which additional ratio files to create.</li>
+</ol>
+<p>The effective DPI shown for each size assumes the image fills the entire print and any overflow is cropped, which is how most print shops handle full-bleed prints. It is calculated as the smaller of image width &divide; print width and image height &divide; print height.</p>
+
+<h2>Tips before you publish</h2>
+<ul>
+<li>Start large. Create artwork at the final pixel size of your biggest print instead of upscaling later.</li>
+<li>Describe sizes clearly in the listing, including which file covers which frame, and mention that frames are not included.</li>
+<li>Order a test print of at least one size to confirm colors and sharpness.</li>
+<li>Remind buyers that home printers often cannot print edge to edge, so a small white margin may appear.</li>
+</ul>
+
+<h2 id="faq">Frequently asked questions</h2>
+<div class="faq">
+<details><summary>What DPI do I need for Etsy printable wall art?</summary><p>Aim for 300 DPI at the largest size you advertise. That is the standard print shops and home printers expect for sharp results viewed up close. For large posters that are viewed from a distance, 150 to 200 DPI usually still looks good, but anything below 150 DPI is likely to look soft.</p></details>
+<details><summary>Does changing the DPI setting in Photoshop make my image sharper?</summary><p>No. The DPI value stored in a file is only a label. What matters is the number of pixels. A 2400 x 3000 pixel image prints at 300 DPI on 8 x 10 inches whether its metadata says 72 or 300. To print larger at the same quality you need more pixels, ideally by creating the artwork at a high resolution from the start.</p></details>
+<details><summary>How many pixels do I need for a 24 x 36 inch print?</summary><p>At 300 DPI you need 7200 x 10800 pixels (24 x 300 by 36 x 300). At 150 DPI you need 3600 x 5400 pixels.</p></details>
+<details><summary>Which files should I include in an Etsy printable listing?</summary><p>A common setup is one high-resolution file per aspect ratio: 2:3, 3:4, 4:5, 11:14, and ISO (A-series). Each file covers every smaller size in the same ratio, so five files can serve more than twenty frame sizes, which fits within Etsy's limit of five files per digital listing.</p></details>
+<details><summary>Why does my 8 x 10 print look cropped?</summary><p>8 x 10 is a 4:5 ratio, while many artworks are designed at 2:3 (for example 24 x 36). Printing a 2:3 image at 8 x 10 means part of the image is cut off. Including a separate 4:5 file in your listing avoids this.</p></details>
+<details><summary>Is my image uploaded when I use this checker?</summary><p>No. The checker reads the image dimensions inside your browser. The file never leaves your device, and nothing is sent to a server.</p></details>
+</div>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <span>&copy; 2026 ISRS Tech Portal. Free tools for creators and Etsy sellers.</span>
+    <nav aria-label="Footer">
+      <a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms/">Terms</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
