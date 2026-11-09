@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://isrstechportal.com/sitemap.xml
+Sitemap: https://isrstechportal.onrender.com/sitemap.xml
