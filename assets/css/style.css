@@ -159,3 +159,4 @@ label.check input{width:1.05rem;height:1.05rem;accent-color:var(--brand)}
 .price-card .btn{margin-top:auto}
 .price-card.featured{border:2px solid var(--brand)}
 .free-tier{margin:0 0 1.2rem}
+.price-card .price small{font-size:.9rem;font-weight:600;color:var(--muted)}

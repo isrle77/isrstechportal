@@ -1,4 +1,4 @@
-// Demo page controller for the Guided Troubleshooter Widget
+// Demo page controller for StepFix (Guided Troubleshooter Widget)
 (function () {
   'use strict';
   var BASE = '/tools/troubleshooter-widget/templates/';
